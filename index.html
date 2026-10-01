@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GLOBAL AI LEARNING | Code with Bala Krishna</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f4f7fb;
+    color:#172033;
+    transition:0.3s;
+}
+
+body.dark{
+    background:#101522;
+    color:#f4f7ff;
+}
+
+header{
+    background:linear-gradient(135deg,#111827,#2563eb);
+    color:white;
+    padding:18px 5%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 15px #0003;
+}
+
+.nav{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+button{
+    border:0;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+    background:#2563eb;
+    color:white;
+}
+
+button:hover{
+    opacity:.85;
+    transform:translateY(-1px);
+}
+
+.nav button{
+    background:#ffffff22;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:30px 18px;
+}
+
+.hero{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+    border-radius:20px;
+    padding:55px 30px;
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:18px;
+    margin-bottom:25px;
+}
+
+.search{
+    width:100%;
+    padding:15px;
+    border:1px solid #ccd3df;
+    border-radius:10px;
+    font-size:16px;
+    margin-bottom:25px;
+}
+
+.section-title{
+    margin:30px 0 18px;
+    font-size:28px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:18px;
+}
+
+.card{
+    background:white;
+    padding:22px;
+    border-radius:15px;
+    box-shadow:0 5px 20px #00000012;
+    transition:.2s;
+}
+
+.dark .card{
+    background:#182033;
+    color:#f4f7ff;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+}
+
+.icon{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#667085;
+    margin-bottom:15px;
+    line-height:1.5;
+}
+
+.dark .card p{
+    color:#b9c2d0;
+}
+
+.badge{
+    display:inline-block;
+    background:#e0e7ff;
+    color:#3730a3;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:12px;
+    margin-bottom:10px;
+}
+
+.lesson{
+    display:none;
+}
+
+.lesson.active{
+    display:block;
+}
+
+.lesson-box{
+    background:white;
+    border-radius:16px;
+    padding:28px;
+    box-shadow:0 5px 20px #00000012;
+    margin-top:20px;
+}
+
+.dark .lesson-box{
+    background:#182033;
+}
+
+.lesson-box h1{
+    margin-bottom:15px;
+}
+
+.lesson-box h2{
+    margin-top:25px;
+    margin-bottom:10px;
+}
+
+.lesson-box p{
+    line-height:1.7;
+    margin-bottom:12px;
+}
+
+.lesson-box ul{
+    margin-left:25px;
+    line-height:1.8;
+}
+
+pre{
+    background:#111827;
+    color:#e5e7eb;
+    padding:18px;
+    border-radius:10px;
+    overflow:auto;
+    margin:15px 0;
+}
+
+.progress-area{
+    margin-top:20px;
+}
+
+.progress{
+    width:100%;
+    height:15px;
+    background:#dbe2ea;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:#2563eb;
+    transition:.4s;
+}
+
+.quiz{
+    margin-top:20px;
+}
+
+.question{
+    background:#f1f5f9;
+    padding:18px;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+.dark .question{
+    background:#222c40;
+}
+
+.option{
+    display:block;
+    width:100%;
+    text-align:left;
+    margin-top:8px;
+    background:#e2e8f0;
+    color:#172033;
+}
+
+.dark .option{
+    background:#303b51;
+    color:white;
+}
+
+.result{
+    margin-top:15px;
+    font-weight:bold;
+    font-size:18px;
+}
+
+footer{
+    margin-top:50px;
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+.hidden{
+    display:none!important;
+}
+
+@media(max-width:600px){
+    .hero h1{
+        font-size:30px;
+    }
+
+    .nav{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .nav-buttons{
+        width:100%;
+    }
+
+    .nav button{
+        flex:1;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="nav">
+
+<div class="logo">🚀 GLOBAL AI LEARNING</div>
+
+<div class="nav-buttons">
+<button onclick="showPage('home')">Home</button>
+<button onclick="showPage('courses')">Courses</button>
+<button onclick="showPage('quiz')">Quiz</button>
+<button onclick="toggleDark()">🌙</button>
+</div>
+
+</div>
+</header>
+
+
+<main class="container">
+
+<!-- HOME -->
+
+<section id="home" class="page">
+
+<div class="hero">
+
+<h1>GLOBAL AI LEARNING</h1>
+
+<p>Learn Coding • AI • Web Development • Programming</p>
+
+<button onclick="showPage('courses')">
+🚀 Start Learning
+</button>
+
+</div>
+
+<input
+id="searchBox"
+class="search"
+type="text"
+placeholder="🔎 Search Python, Java, HTML, AI..."
+onkeyup="searchCourses()"
+>
+
+<h2 class="section-title">🔥 Popular Courses</h2>
+
+<div class="grid">
+
+<div class="card course-card">
+<div class="icon">🐍</div>
+<span class="badge">Programming</span>
+<h3>Python</h3>
+<p>Learn Python from beginner level with simple examples.</p>
+<button onclick="openLesson('python')">Open Python</button>
+</div>
+
+<div class="card course-card">
+<div class="icon">☕</div>
+<span class="badge">Programming</span>
+<h3>Java</h3>
+<p>Learn Java basics, OOP and programming concepts.</p>
+<button onclick="openLesson('java')">Open Java</button>
+</div>
+
+<div class="card course-card">
+<div class="icon">🌐</div>
+<span class="badge">Web</span>
+<h3>HTML</h3>
+<p>Create websites using HTML.</p>
+<button onclick="openLesson('html')">Open HTML</button>
+</div>
+
+<div class="card course-card">
+<div class="icon">🎨</div>
+<span class="badge">Web</span>
+<h3>CSS</h3>
+<p>Design beautiful websites with CSS.</p>
+<button onclick="openLesson('css')">Open CSS</button>
+</div>
+
+<div class="card course-card">
+<div class="icon">⚡</div>
+<span class="badge">Web</span>
+<h3>JavaScript</h3>
+<p>Make websites interactive and functional.</p>
+<button onclick="openLesson('javascript')">Open JavaScript</button>
+</div>
+
+<div class="card course-card">
+<div class="icon">🤖</div>
+<span class="badge">Artificial Intelligence</span>
+<h3>AI Basics</h3>
+<p>Understand Artificial Intelligence and Machine Learning.</p>
+<button onclick="openLesson('ai')">Open AI</button>
+</div>
+
+</div>
+
+<h2 class="section-title">📊 Your Learning Progress</h2>
+
+<div class="card">
+
+<p>Completed lessons:</p>
+
+<div class="progress-area">
+
+<div class="progress">
+<div id="progressBar" class="progress-bar"></div>
+</div>
+
+<p id="progressText">0% completed</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- COURSES -->
+
+<section id="courses" class="page hidden">
+
+<h1 class="section-title">📚 All Courses</h1>
+
+<div class="grid">
+
+<div class="card">
+<h3>🐍 Python</h3>
+<p>Variables, conditions, loops, functions, lists and more.</p>
+<button onclick="openLesson('python')">Learn Now</button>
+</div>
+
+<div class="card">
+<h3>☕ Java</h3>
+<p>Java syntax, variables, conditions, loops and OOP.</p>
+<button onclick="openLesson('java')">Learn Now</button>
+</div>
+
+<div class="card">
+<h3>🌐 HTML</h3>
+<p>Build the structure of websites.</p>
+<button onclick="openLesson('html')">Learn Now</button>
+</div>
+
+<div class="card">
+<h3>🎨 CSS</h3>
+<p>Style and design websites.</p>
+<button onclick="openLesson('css')">Learn Now</button>
+</div>
+
+<div class="card">
+<h3>⚡ JavaScript</h3>
+<p>Add functionality to websites.</p>
+<button onclick="openLesson('javascript')">Learn Now</button>
+</div>
+
+<div class="card">
+<h3>🤖 Artificial Intelligence</h3>
+<p>Learn AI fundamentals.</p>
+<button onclick="openLesson('ai')">Learn Now</button>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PYTHON -->
+
+<section id="python" class="lesson page">
+
+<div class="lesson-box">
+
+<button onclick="showPage('home')">← Back</button>
+
+<h1>🐍 Python Course</h1>
+
+<p>
+Python is a beginner-friendly programming language.
+</p>
+
+<h2>Lesson 1: Print</h2>
+
+<pre>
+print("Hello World")
+</pre>
+
+<p>
+The print function displays information on the screen.
+</p>
+
+<h2>Lesson 2: Variables</h2>
+
+<pre>
+name = "Bala"
+age = 18
+
+print(name)
+print(age)
+</pre>
+
+<h2>Lesson 3: If Condition</h2>
+
+<pre>
+age = 18
+
+if age >= 18:
+    print("Adult")
+else:
+    print("Not Adult")
+</pre>
+
+<h2>Lesson 4: Loop</h2>
+
+<pre>
+for i in range(5):
+    print(i)
+</pre>
+
+<h2>Lesson 5: Function</h2>
+
+<pre>
+def greet():
+    print("Hello")
+
+greet()
+</pre>
+
+<button onclick="completeLesson('python')">
+✅ Mark Python Complete
+</button>
+
+</div>
+
+</section>
+
+
+<!-- JAVA -->
+
+<section id="java" class="lesson page">
+
+<div class="lesson-box">
+
+<button onclick="showPage('home')">← Back</button>
+
+<h1>☕ Java Course</h1>
+
+<h2>Hello World</h2>
+
+<pre>
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+</pre>
+
+<h2>Variables</h2>
+
+<pre>
+int age = 18;
+String name = "Bala";
+
+System.out.println(name);
+System.out.println(age);
+</pre>
+
+<h2>If Condition</h2>
+
+<pre>
+int age = 18;
+
+if(age >= 18){
+    System.out.println("Adult");
+}else{
+    System.out.println("Not Adult");
+}
+</pre>
+
+<h2>Loop</h2>
+
+<pre>
+for(int i=0; i<5; i++){
+    System.out.println(i);
+}
+</pre>
+
+<button onclick="completeLesson('java')">
+✅ Mark Java Complete
+</button>
+
+</div>
+
+</section>
+
+
+<!-- HTML -->
+
+<section id="html" class="lesson page">
+
+<div class="lesson-box">
+
+<button onclick="showPage('home')">← Back</button>
+
+<h1>🌐 HTML Course</h1>
+
+<p>
+HTML creates the structure of a webpage.
+</p>
+
+<h2>Basic HTML</h2>
+
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;My Website&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1&gt;Hello World&lt;/h1&gt;
+
+&lt;p&gt;My first website&lt;/p&gt;
+
+&lt;button&gt;Click Me&lt;/button&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<h2>Headings</h2>
+
+<pre>
+&lt;h1&gt;Main Heading&lt;/h1&gt;
+&lt;h2&gt;Sub Heading&lt;/h2&gt;
+</pre>
+
+<h2>Links</h2>
+
+<pre>
+&lt;a href="https://example.com"&gt;
+Visit Website
+&lt;/a&gt;
+</pre>
+
+<button onclick="completeLesson('html')">
+✅ Mark HTML Complete
+</button>
+
+</div>
+
+</section>
+
+
+<!-- CSS -->
+
+<section id="css" class="lesson page">
+
+<div class="lesson-box">
+
+<button onclick="showPage('home')">← Back</button>
+
+<h1>🎨 CSS Course</h1>
+
+<p>
+CSS is used to design webpages.
+</p>
+
+<h2>Example</h2>
+
+<pre>
+body {
+    background: black;
+    color: white;
+}
+
+h1 {
+    font-size: 40px;
+}
+</pre>
+
+<h2>Button Design</h2>
+
+<pre>
+button {
+    background: blue;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+</pre>
+
+<button onclick="completeLesson('css')">
+✅ Mark CSS Complete
+</button>
+
+</div>
+
+</section>
+
+
+<!-- JAVASCRIPT -->
+
+<section id="javascript" class="lesson page">
+
+<div class="lesson-box">
+
+<button onclick="showPage('home')">← Back</button>
+
+<h1>⚡ JavaScript Course</h1>
+
+<p>
+JavaScript makes webpages interactive.
+</p>
+
+<h2>Alert</h2>
+
+<pre>
+alert("Hello World");
+</pre>
+
+<h2>Variables</h2>
+
+<pre>
+let name = "Bala";
+let age = 18;
+
+console.log(name);
+console.log(age);
+</pre>
+
+<h2>Button Function</h2>
+
+<pre>
+function hello(){
+    alert("Hello Bala!");
+}
+</pre>
+
+<button onclick="helloDemo()">
+▶ Run JavaScript Demo
+</button>
+
+<br><br>
+
+<button onclick="completeLesson('javascript')">
+✅ Mark JavaScript Complete
+</button>
+
+</div>
+
+</section>
+
+
+<!-- AI -->
+
+<section id="ai" class="lesson page">
+
+<div class="lesson-box">
+
+<button onclick="showPage('home')">← Back</button>
+
+<h1>🤖 Artificial Intelligence</h1>
+
+<h2>What is AI?</h2>
+
+<p>
+Artificial Intelligence is the field of creating computer systems
+that can perform tasks that normally require human intelligence.
+</p>
+
+<h2>Examples</h2>
+
+<ul>
+<li>Chatbots</li>
+<li>Image recognition</li>
+<li>Voice assistants</li>
+<li>Recommendation systems</li>
+<li>Machine learning</li>
+<li>Generative AI</li>
+</ul>
+
+<h2>AI Learning Roadmap</h2>
+
+<pre>
+Python
+   ↓
+Mathematics
+   ↓
+Data Structures
+   ↓
+Machine Learning
+   ↓
+Deep Learning
+   ↓
+Generative AI
+   ↓
+AI Projects
+</pre>
+
+<button onclick="completeLesson('ai')">
+✅ Mark AI Complete
+</button>
+
+</div>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section id="quiz" class="page hidden">
+
+<h1 class="section-title">🧠 Programming Quiz</h1>
+
+<div class="quiz">
+
+<div class="question">
+
+<p><b>1. Which language is commonly used for AI and data science?</b></p>
+
+<button class="option" onclick="answer(1,'Python')">Python</button>
+<button class="option" onclick="answer(1,'HTML')">HTML</button>
+<button class="option" onclick="answer(1,'CSS')">CSS</button>
+
+</div>
+
+
+<div class="question">
+
+<p><b>2. Which language is used to structure a webpage?</b></p>
+
+<button class="option" onclick="answer(2,'Java')">Java</button>
+<button class="option" onclick="answer(2,'HTML')">HTML</button>
+<button class="option" onclick="answer(2,'Python')">Python</button>
+
+</div>
+
+
+<div class="question">
+
+<p><b>3. Which technology is used to style webpages?</b></p>
+
+<button class="option" onclick="answer(3,'CSS')">CSS</button>
+<button class="option" onclick="answer(3,'Java')">Java</button>
+<button class="option" onclick="answer(3,'AI')">AI</button>
+
+</div>
+
+
+<div class="question">
+
+<p><b>4. Which technology makes webpages interactive?</b></p>
+
+<button class="option" onclick="answer(4,'JavaScript')">JavaScript</button>
+<button class="option" onclick="answer(4,'HTML')">HTML</button>
+<button class="option" onclick="answer(4,'CSS')">CSS</button>
+
+</div>
+
+
+<button onclick="finishQuiz()">
+🏆 Finish Quiz
+</button>
+
+<div id="quizResult" class="result"></div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<h3>GLOBAL AI LEARNING</h3>
+
+<p>Learn • Build • Create • Grow 🚀</p>
+
+<p>© 2026 Global AI Learning</p>
+
+</footer>
+
+
+<script>
+
+const pages = document.querySelectorAll(".page");
+
+const lessons = [
+    "python",
+    "java",
+    "html",
+    "css",
+    "javascript",
+    "ai"
+];
+
+let completed =
+JSON.parse(localStorage.getItem("completedLessons")) || [];
+
+
+function showPage(id){
+
+    pages.forEach(page=>{
+        page.classList.add("hidden");
+        page.classList.remove("active");
+    });
+
+    const target = document.getElementById(id);
+
+    if(target){
+        target.classList.remove("hidden");
+        target.classList.add("active");
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+    }
+
+    updateProgress();
+}
+
+
+function openLesson(id){
+
+    pages.forEach(page=>{
+        page.classList.add("hidden");
+        page.classList.remove("active");
+    });
+
+    const lesson =
+    document.getElementById(id);
+
+    if(lesson){
+
+        lesson.classList.remove("hidden");
+        lesson.classList.add("active");
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+    }
+}
+
+
+function completeLesson(id){
+
+    if(!completed.includes(id)){
+
+        completed.push(id);
+
+        localStorage.setItem(
+            "completedLessons",
+            JSON.stringify(completed)
+        );
+
+        alert("🎉 Lesson completed!");
+
+    }else{
+
+        alert("This lesson is already completed.");
+
+    }
+
+    updateProgress();
+}
+
+
+function updateProgress(){
+
+    const percentage =
+    Math.round(
+        (completed.length / lessons.length) * 100
+    );
+
+    const bar =
+    document.getElementById("progressBar");
+
+    const text =
+    document.getElementById("progressText");
+
+    if(bar){
+        bar.style.width =
+        percentage + "%";
+    }
+
+    if(text){
+        text.innerText =
+        percentage + "% completed";
+    }
+}
+
+
+function toggleDark(){
+
+    document.body.classList.toggle("dark");
+
+    localStorage.setItem(
+        "darkMode",
+        document.body.classList.contains("dark")
+    );
+}
+
+
+function loadDarkMode(){
+
+    const dark =
+    localStorage.getItem("darkMode");
+
+    if(dark === "true"){
+        document.body.classList.add("dark");
+    }
+}
+
+
+function searchCourses(){
+
+    const search =
+    document
+    .getElementById("searchBox")
+    .value
+    .toLowerCase();
+
+    const cards =
+    document.querySelectorAll(".course-card");
+
+    cards.forEach(card=>{
+
+        const text =
+        card.innerText.toLowerCase();
+
+        if(text.includes(search)){
+            card.style.display="";
+        }else{
+            card.style.display="none";
+        }
+
+    });
+}
+
+
+function helloDemo(){
+
+    alert("🚀 Hello Bala! JavaScript is working!");
+}
+
+
+let answers = {};
+
+function answer(question, value){
+
+    answers[question] = value;
+
+}
+
+
+function finishQuiz(){
+
+    let score = 0;
+
+    if(answers[1] === "Python"){
+        score++;
+    }
+
+    if(answers[2] === "HTML"){
+        score++;
+    }
+
+    if(answers[3] === "CSS"){
+        score++;
+    }
+
+    if(answers[4] === "JavaScript"){
+        score++;
+    }
+
+    const result =
+    document.getElementById("quizResult");
+
+    result.innerHTML =
+    "🏆 Your Score: " +
+    score +
+    " / 4";
+
+}
+
+
+loadDarkMode();
+updateProgress();
+
+showPage("home");
+
+</script>
+
+</body>
+</html>
